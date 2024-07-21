@@ -1,0 +1,32 @@
+{
+  "name": "otto",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-s build:ui build:ui:generate && clasp push",
+    "build:ui": "vite build",
+    "build:ui:generate": "run-p build:ui:generate:*",
+    "build:ui:generate:css": "echo '<style>' > ./gas/stylesheet.html && cat ./dist/assets/index*.css >> ./gas/stylesheet.html && echo '</style>' >> ./gas/stylesheet.html",
+    "build:ui:generate:js": "echo '<script type=\"module\">' > ./gas/javascript.html && cat ./dist/assets/index*.js >> ./gas/javascript.html && echo '</script>' >> ./gas/javascript.html",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2",
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@types/google-apps-script": "^1.0.83",
+    "autoprefixer": "^10.4.19",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.39",
+    "svelte": "^4.2.18",
+    "tailwindcss": "^3.4.6",
+    "vite": "^5.3.4"
+  },
+  "dependencies": {
+    "bits-ui": "^0.21.12",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0",
+    "tailwind-variants": "^0.2.1"
+  }
+}
